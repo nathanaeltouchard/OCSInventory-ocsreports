@@ -15,7 +15,7 @@
   <mkdir dir="${build-dir}/logs"/>
  </target>
 
- <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server"
+ <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
    <exec executable="phpcs">
     <arg line="--report=checkstyle 
                --report-file=build/logs/checkstyle.xml
