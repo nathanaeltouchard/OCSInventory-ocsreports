@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="ocs-PHP-Jenkins" default="build">
+ <property name="build-dir" value="build"/>
+
+ <target name="build" depends="prepare,lint,phpcs-ci"/>
+
+ <target name="clean" description="Cleanup build respositories">
+  <delete dir="${build-dir}/logs"/>
+ </target>
+
+ <target name="prepare" depends="clean"
+         description="Prepare for build">
+  <mkdir dir="${build-dir}/logs"/>
+ </target>
+
+ <target name="lint" depends="lint 5.4.24,lint 5.6.36,lint 7.0.30" description="Check syntax error of php code whith php Lint"/>
+
+ <target name="lint 5.4.24">
+  <apply executable="/opt/php-5.4.24/sapi/cli/php" failonerror="true">
+   <arg value="-l" />
+   <fileset dir="src">
+    <include name="**/*.php" />
+   </fileset>
+  </apply>
+  <exec command="bash script-lint/lint-5.4.sh" passthru="true"/>  
+ </target>
+
+ <target name="lint 5.6.36">
+  <apply executable="/opt/php-5.6.36/sapi/cli/php" failonerror="true">
+   <arg value="-l" />
+   <fileset dir="src">
+    <include name="**/*.php" />
+   </fileset>
+  </apply>
+  <exec command="bash script-lint/lint-5.6.sh" passthru="true"/>
+ </target>
+
+<target name="lint 7.0.30">
+  <apply executable="/opt/php-7.0.30/sapi/cli/php" failonerror="true">
+   <arg value="-l" />
+   <fileset dir="src">
+    <include name="**/*.php" />
+   </fileset>
+  </apply>
+  <exec command="bash script-lint/lint-7.0.sh" passthru="true"/>
+ </target>
+
+ <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
+   <exec executable="phpcs">
+    <arg line="--report=checkstyle 
+               --report-file=build/logs/checkstyle.xml
+               --standard=PEAR
+	       --extensions=php *" />
+   </exec>
+ </target>
+
+</project>
+
+
