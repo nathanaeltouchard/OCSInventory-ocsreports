@@ -48,7 +48,7 @@
   <exec command="bash script-lint/lint-7.0.sh" passthru="true"/>
  </target>
 
- <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server$
+ <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
    <exec executable="phpcs">
     <arg line="--report=checkstyle 
                --report-file=build/logs/checkstyle.xml
