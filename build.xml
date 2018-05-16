@@ -4,7 +4,7 @@
  <property name="build-dir" value="build"/>
  <property name="src-dir" value="${project.basedir}" override="true"/>
 
- <target name="build" depends="prepare,lint,phpcs-ci"/>
+ <target name="build" depends="prepare,phpcs-ci,lint"/>
 
  <target name="clean" description="Cleanup build respositories">
   <delete dir="${build-dir}/logs"/>
@@ -14,17 +14,6 @@
          description="Prepare for build">
   <mkdir dir="${build-dir}/logs"/>
  </target>
-
- <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
-   <exec executable="phpcs">
-    <arg line="--report=checkstyle 
-               --report-file=build/logs/checkstyle.xml
-               --standard=PEAR
-               --extensions=php
-           ${basedir}/src" />" />
-   </exec>
- </target>
-
 
  <target name="lint" depends="lint 5.6.36,lint 7.0.30" description="Check syntax error of php code whith php Lint"/>
 
@@ -58,5 +47,16 @@
   </apply>
   <exec command="bash script-lint/lint-7.0.sh" passthru="true"/>
  </target>
+
+ <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server$
+   <exec executable="phpcs">
+    <arg line="--report=checkstyle 
+               --report-file=build/logs/checkstyle.xml
+               --standard=PEAR
+               --extensions=php
+           ${basedir}/src" />" />
+   </exec>
+ </target>
+
 
 </project>
