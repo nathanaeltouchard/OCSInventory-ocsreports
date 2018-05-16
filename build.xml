@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="ocs-PHP-Jenkins" default="build">
+<project name="ocs-PHP-Jenkins" basedir="" default="build">
  <property name="build-dir" value="build"/>
+ <property name="src-dir" value="${project.basedir}" override="true"/>
 
  <target name="build" depends="prepare,lint,phpcs-ci"/>
 
@@ -17,19 +18,19 @@
  <target name="lint" depends="lint 5.4.24,lint 5.6.36,lint 7.0.30" description="Check syntax error of php code whith php Lint"/>
 
  <target name="lint 5.4.24">
+  <exec command="bash script-lint/lint-5.4.sh" passthru="true"/>
   <apply executable="/opt/php-5.4.24/sapi/cli/php" failonerror="true">
    <arg value="-l" />
-   <fileset dir="src">
+   <fileset dir="${src-dir}">
     <include name="**/*.php" />
    </fileset>
-  </apply>
-  <exec command="bash script-lint/lint-5.4.sh" passthru="true"/>  
+  </apply>  
  </target>
 
  <target name="lint 5.6.36">
   <apply executable="/opt/php-5.6.36/sapi/cli/php" failonerror="true">
    <arg value="-l" />
-   <fileset dir="src">
+   <fileset dir="${src-dir}">
     <include name="**/*.php" />
    </fileset>
   </apply>
@@ -39,7 +40,7 @@
 <target name="lint 7.0.30">
   <apply executable="/opt/php-7.0.30/sapi/cli/php" failonerror="true">
    <arg value="-l" />
-   <fileset dir="src">
+   <fileset dir="${src-dir}">
     <include name="**/*.php" />
    </fileset>
   </apply>
