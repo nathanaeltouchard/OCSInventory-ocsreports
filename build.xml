@@ -53,8 +53,7 @@
     <arg line="--report=checkstyle 
                --report-file=build/logs/checkstyle.xml
                --standard=PEAR
-               --extensions=php
-           ${basedir}/src" />" />
+               --extensions=php *" />
    </exec>
  </target>
 
