@@ -18,7 +18,7 @@
  <target name="lint" depends="lint 5.6.36,lint 7.0.30" description="Check syntax error of php code whith php Lint"/>
 
  <target name="lint 5.4.24">
-  <exec command="bash script-lint/lint-5.4.sh" passthru="true"/>
+ <!-- <exec command="bash script-lint/lint-5.4.sh" passthru="true"/> -->
   <apply executable="/opt/php-5.4.24/sapi/cli/php" failonerror="true">
    <arg value="-l" />
    <fileset dir="${src-dir}">
@@ -28,7 +28,7 @@
  </target>
 
  <target name="lint 5.6.36">
-  <exec command="bash script-lint/lint-5.6.sh" passthru="true"/>
+ <!-- <exec command="bash script-lint/lint-5.6.sh" passthru="true"/> -->
   <apply executable="/opt/php-5.6.36/sapi/cli/php" failonerror="true">
    <arg value="-l" />
    <fileset dir="${src-dir}">
@@ -38,7 +38,7 @@
  </target>
 
 <target name="lint 7.0.30">
-  <exec command="bash script-lint/lint-7.0.sh" passthru="true"/>
+  <!-- <exec command="bash script-lint/lint-7.0.sh" passthru="true"/> -->
   <apply executable="/opt/php-7.0.30/sapi/cli/php" failonerror="true">
    <arg value="-l" />
    <fileset dir="${src-dir}">
