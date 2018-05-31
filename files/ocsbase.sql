@@ -3,7 +3,7 @@
 -- Table structure for table `accesslog`
 --
 
-CREATE TABLE `accesslog` (
+CRETE TABLE `accesslog` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `HARDWARE_ID` int(11) NOT NULL,
   `USERID` varchar(255) DEFAULT NULL,
@@ -137,7 +137,7 @@ CREATE TABLE `blacklist_subnet` (
 --
 
 
-CRATE TABLE `config` (
+CREATE TABLE `config` (
   `NAME` varchar(50) NOT NULL,
   `IVALUE` int(11) DEFAULT NULL,
   `TVALUE` varchar(255) DEFAULT NULL,
