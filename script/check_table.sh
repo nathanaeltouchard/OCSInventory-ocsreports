@@ -3,7 +3,8 @@
 #Group of all requests/create in php/sql files
 
 #SELECT requests in php files
-select_request=`grep -o -r --include=*.php -e 'select [\`A-Za-z\_\-\*\ \,\.0-9]* from [\`A-Za-z\_\-\`\,0-9]*' -e 'SELECT [\`A-Za-z\_\-\*\ \,\.0-9]* FROM [\`A-Za-z\_\-\`\,0-9]*'|sed -e 's/\`//g'|awk '{print $NF}'|sort|uniq|sed -e 's/,/\n/g'|grep -v 'from\|FROM\|the\|%s\|table'`
+select_request=`grep -o -r --include=*.php -e 'select .* from [\`A-Za-z\_\-\`\,0-9]*' -e 'SELECT .* FROM [\`A-Za-z\_\-\`\,0-9]*'|sed -e 's/\`//g'|awk '{print $NF}'|sort|uniq|sed -e 's/,/\n/g'|grep -v 'from\|FROM\|the\|%s\|table'`
+#[\`A-Za-z\_\-\*\ \,\.0-9]
 
 #UPDATE requests in php/sql files
 update_request=`grep -o -r --include=*.{php,sql} -e 'UPDATE [\`A-Za-z\_\-\0-9]* SET' -e 'update [\`A-Za-z\_\-\`0-9]* set'|sed -e 's/\`//g'|awk '{print $2}' |sort |uniq|grep -v '%s'`
@@ -49,7 +50,7 @@ check_table_exist (){
 			else
 				result=`grep -w -rn --include=*.{php,sql} "$table"|grep "$3"` #echo file:line-number:line where we found the error
 			fi
-			echo $result
+			echo "$result"
 		fi
 	done
 }

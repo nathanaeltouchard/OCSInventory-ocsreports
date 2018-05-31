@@ -137,7 +137,7 @@ CREATE TABLE `blacklist_subnet` (
 --
 
 
-CREATE TABLE `config` (
+CRATE TABLE `config` (
   `NAME` varchar(50) NOT NULL,
   `IVALUE` int(11) DEFAULT NULL,
   `TVALUE` varchar(255) DEFAULT NULL,

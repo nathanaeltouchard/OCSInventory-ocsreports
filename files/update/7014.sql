@@ -10,4 +10,4 @@ CREATE TABLE IF NOT EXISTS `assets_categories` (
 
 -- Add CATEGORY column to hardware table
 UNLOCK TABLES;
-ALTER TABLE `hardware` ADD `CATEGORY_ID` int(11) default NULL AFTER `ARCH`;
+ATER TABLE `hardware` ADD `CATEGORY_ID` int(11) default NULL AFTER `ARCH`;
