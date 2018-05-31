@@ -17,7 +17,7 @@ check_syntax_sql (){
 		for file in  `find files/update/ -name "*.sql"|sort|seq -f "files/update/%g.sql" $(($gui_version+1)) $last_update` 
       		do
         	       	echo "$file errors : "
-        	       	mysql --login-path=jenkins -D ocs_test_jenkins --force < $file
+        	       	mysql -u root -proot -D ocs_test_jenkins --force < $file
        		done
 	fi
 }
