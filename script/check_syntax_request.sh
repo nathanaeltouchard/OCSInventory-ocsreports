@@ -7,7 +7,7 @@ bash script/mysql_database_test.sh #script which drop if exists in database the 
 check_syntax_sql (){
 
 	#Write the GUI_VERSION into a text file
-	gui_version=`mysql --login-path=jenkins -D ocs_test_jenkins -e "select TVALUE from config where NAME='GUI_VERSION'"|grep -e "[0-9]"` # version of update
+	gui_version=`mysql -u root -proot -D ocs_test_jenkins -e "select TVALUE from config where NAME='GUI_VERSION'"|grep -e "[0-9]"` # version of update
         last_update=`find files/update/ -type f -printf "%f\n" -name "*.sql"|sort|sed '$!d'|sed 's/\.sql//'` # number of the last update commit
 	if [ -z $gui_version ]
 	then
