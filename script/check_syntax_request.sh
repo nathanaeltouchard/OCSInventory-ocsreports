@@ -43,12 +43,12 @@ else
    	do
                	echo "<b>$file errors : </b>" #for the report
                	mysql --login-path=jenkins -D ocs_check_SQL_jenkins --force < $file 2>>$error  #connect to mysql with the test database and we import the update code
-		echo "<br/>"
 		if [[ $(cat $error) ]]
 		then
 			finderror=1
 		fi
 		cat_and_rm_mysql_err
+		echo "<br/>"
 	done
 fi
 

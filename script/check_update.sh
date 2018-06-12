@@ -27,6 +27,7 @@ do
 	echo "<b>$file : </b>"
 	mysql --login-path=jenkins -D ocs_check_SQL_jenkins --force < $file 2>>$error
 	cat_and_rm_mysql_err
+	echo "<br/>"
 done
 
 rm_err
