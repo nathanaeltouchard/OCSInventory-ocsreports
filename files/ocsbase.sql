@@ -3,7 +3,7 @@
 -- Table structure for table `accesslog`
 --
 
-CRETE TABLE `accesslog` (
+CREATE TABLE `accesslog` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `HARDWARE_ID` int(11) NOT NULL,
   `USERID` varchar(255) DEFAULT NULL,
