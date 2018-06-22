@@ -43,17 +43,22 @@ else
    	do
                	echo "<b>$file errors : </b>" #for the report
                	mysql --login-path=jenkins -D ocs_check_SQL_jenkins --force < $file 2>>$error  #connect to mysql with the test database and we import the update code
+
+		#if the contents of error file is not empty
 		if [[ $(cat $error) ]]
 		then
-			finderror=1
+			finderror=1 #we found an error
 		fi
+
 		cat_and_rm_mysql_err
 		echo "<br/>"
 	done
 fi
 
+#if there is no error in recent updates files , we will check all updates files
 if (( $finderror == 0)); then
 	echo "<h3>No syntax errors</h3>"
-	bash script/check_update.sh
+	bash script/check_update.sh #script to check
 fi
+
 rm_err
